@@ -20,10 +20,10 @@ spec:
         ports:
         - containerPort: 80
         resources:
-          requests:
+          requests:    #minimum request to run the app
             cpu: 100m
             memory: 128Mi
-          limits:
+          limits:      #Maximum limit is 200m after that pod will fail
             cpu: 200m
             memory: 256Mi
 ---
@@ -41,4 +41,3 @@ spec:
       port: 80
       targetPort: 80
   type: ClusterIP
-
