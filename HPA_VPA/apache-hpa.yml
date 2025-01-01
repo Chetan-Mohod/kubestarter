@@ -1,12 +1,13 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: apache-hpa
+  name: apacha-hpa
 spec:
-  scaleTargetRef:
+  scaleTargetRef: # HPA replica target to our deployment, that's why we add apiVersion, kind, name of deployment
     apiVersion: apps/v1
     kind: Deployment
     name: apache-deployment
+
   minReplicas: 1
   maxReplicas: 5
   metrics:
@@ -16,4 +17,3 @@ spec:
       target:
         type: Utilization
         averageUtilization: 5
-
